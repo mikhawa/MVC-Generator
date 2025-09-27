@@ -7,5 +7,6 @@ require_once '../config.php';
 # autoload des classes PHP
 spl_autoload_register(function ($class) {
     $class = str_replace('\\', '/', $class);
-    require RACINE_PATH.'/' .$class . '.php';
+    // src est le dossier où se trouvent nos classes utilisateurs
+    require RACINE_PATH.'/src/' .$class . '.php';
 });
