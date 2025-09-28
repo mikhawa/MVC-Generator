@@ -43,13 +43,8 @@ class Route
      */
     private function convertToRegex($path)
     {
-        // Échapper les caractères spéciaux
-        $path = preg_quote($path, '/');
-
-        // Remplacer {param} par des groupes de capture
-        $path = preg_replace('/\\\{([^}]+)\\\}/', '([^/]+)', $path);
-
-        return '/^' . $path . '$/';
+        // Échapper les caractères spéciaux sauf les {}
+        $path = str_replace(['/', '.', '+', '*', '?', '^',], ['\/', '\.', '\+', '\*', '\?', '\^',], $path);
     }
 
     /**
@@ -60,11 +55,11 @@ class Route
         if (is_callable($this->callback)) {
             return call_user_func_array($this->callback, $this->parameters);
         }
-
+        
         if (is_string($this->callback) && strpos($this->callback, '@') !== false) {
             return $this->executeControllerAction();
         }
-
+        
         throw new Exception("Callback invalide pour la route");
     }
 
@@ -74,17 +69,17 @@ class Route
     private function executeControllerAction()
     {
         list($controller, $method) = explode('@', $this->callback);
-
+        
         if (!class_exists($controller)) {
             throw new Exception("Contrôleur $controller introuvable");
         }
-
+        
         $instance = new $controller();
-
+        
         if (!method_exists($instance, $method)) {
             throw new Exception("Méthode $method introuvable dans $controller");
         }
-
+        
         return call_user_func_array([$instance, $method], $this->parameters);
     }
 
@@ -93,6 +88,4 @@ class Route
         return $this->parameters;
     }
 }
-
-
 

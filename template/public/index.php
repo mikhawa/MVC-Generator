@@ -4,6 +4,8 @@
 # configuration
 require_once '../config.php';
 
+
+
 # autoload des classes PHP
 spl_autoload_register(function ($class) {
     $class = str_replace('\\', '/', $class);
@@ -12,6 +14,7 @@ spl_autoload_register(function ($class) {
 });
 
 use Controller\Router;
+use Controller\HomeController;
 
 # connexion à la base de données
 try {
@@ -29,14 +32,14 @@ try {
 }
 
 // Initialisation du routeur
-$router = new Router('/MVC-Generator/template/public');
+$router = new Router('/MVC-Generator/public');
 
 // Définition des routes
-$router->get('/', function() {
-    echo  "<h1>Page d'accueil</h1><p>Route avec closure!</p>";
-});
+//$router->get('/', function() {
+//    echo  "<h1>Page d'accueil</h1><p>Route avec closure!</p>";
+//});
 
-$router->get('/home', 'HomeController@index');
+$router->get('/', 'Controller/HomeController@index');
 $router->get('/about', 'HomeController@about');
 $router->get('/user/{id}', 'HomeController@user');
 $router->get('/product/{category}/{id}', 'HomeController@product');
