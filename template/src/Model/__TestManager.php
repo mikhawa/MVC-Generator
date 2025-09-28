@@ -13,4 +13,7 @@ class __TestManager implements ManagerInterface
     {
         $this->connect = $connect;
     }
+
+    // Trait SlugifyTrait
+    use SlugifyTrait;
 }

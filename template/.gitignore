@@ -1,1 +1,7 @@
 # pour éviter de mettre des fichiers temporaires/sensibles dans le dépôt git
+# PHPStorm
+.idea/
+# MacOS
+*.DS_Store
+# Node modules
+node_modules/

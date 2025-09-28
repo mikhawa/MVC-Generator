@@ -11,7 +11,7 @@
 <body>
 <h1>Test</h1>
 <?php
-var_dump($__TestMapping1, $__TestManager1);
+var_dump($__TestMapping1, $__TestManager1, $nameSlugify);
 ?>
 </body>
 </html>
