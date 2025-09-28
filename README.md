@@ -1,5 +1,12 @@
 # MVC-Generator
-Générateur MVC en PHP avec un .phar
+Générateur MVC en PHP avec un .phar en ligne de commande
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+```bash
+cd /path/to/your/project
+php MVC-Generator.phar
+```
 
 ## Description
 Ce projet est un générateur MVC en PHP qui permet de créer rapidement la structure de base d'une application web en utilisant le modèle MVC (Modèle-Vue-Contrôleur). Le générateur est empaqueté dans un fichier .phar pour une distribution facile.

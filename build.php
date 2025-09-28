@@ -5,7 +5,7 @@ try {
     $pharFile = 'MVC-Generator.phar';
 
     if (ini_get('phar.readonly')) {
-        throw new Exception('La création de PHAR est désactivée (phar.readonly = Off). Activez le dans php.ini de la version PHP dans la console.');
+        throw new Exception('La création de PHAR est désactivée (phar.readonly = Off). Activez le dans php.ini de la version PHP dans la console (php -v).');
     }
 
     if (file_exists($pharFile)) {
